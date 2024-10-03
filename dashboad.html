@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-lg font-semibold">Dashboard</div>
+      <div class="space-x-4">
+        <a href="index.html" class="text-gray-600 hover:text-gray-800">Home</a>
+        <a href="stat.html" class="text-gray-600 hover:text-gray-800">Bookings</a>
+        <a href="#" class="text-gray-600 hover:text-gray-800">Profile</a>
+        <button id="logoutBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-1/4 bg-gray-200 h-screen p-4">
+      <ul>
+        <li class="mb-4">
+          <a href="#" class="block py-2 px-4 bg-gray-300 rounded hover:bg-gray-400">Dashboard Overview</a>
+        </li>
+        <li class="mb-4">
+          <a href="#" class="block py-2 px-4 bg-gray-300 rounded hover:bg-gray-400">Manage Bookings</a>
+        </li>
+        <li class="mb-4">
+          <a href="#" class="block py-2 px-4 bg-gray-300 rounded hover:bg-gray-400">Users</a>
+        </li>
+        <li class="mb-4">
+          <a href="#" class="block py-2 px-4 bg-gray-300 rounded hover:bg-gray-400">Settings</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Dashboard Content -->
+    <main class="w-3/4 p-6">
+      <h1 class="text-3xl font-semibold mb-6">Dashboard Overview</h1>
+      
+      <!-- Widgets -->
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Widget 1 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4">Total Bookings</h2>
+          <p class="text-4xl font-bold text-blue-500">150</p>
+        </div>
+
+        <!-- Widget 2 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4">Pending Bookings</h2>
+          <p class="text-4xl font-bold text-yellow-500">20</p>
+        </div>
+
+        <!-- Widget 3 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4">Completed Bookings</h2>
+          <p class="text-4xl font-bold text-green-500">130</p>
+        </div>
+      </div>
+
+      <!-- Table of Recent Bookings -->
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Recent Bookings</h2>
+      <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Booking ID</th>
+            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Hotel Name</th>
+            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Date</th>
+            <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-2 px-4 text-sm text-gray-700">103</td>
+            <td class="py-2 px-4 text-sm text-gray-700">Luxury Hotel</td>
+            <td class="py-2 px-4 text-sm text-gray-700">2024-10-10</td>
+            <td class="py-2 px-4 text-sm text-green-500">Completed</td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4 text-sm text-gray-700">86</td>
+            <td class="py-2 px-4 text-sm text-gray-700">Deluxe Inn</td>
+            <td class="py-2 px-4 text-sm text-gray-700">2024-10-12</td>
+            <td class="py-2 px-4 text-sm text-yellow-500">Pending</td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4 text-sm text-gray-700">96</td>
+            <td class="py-2 px-4 text-sm text-gray-700">Elegant Suites</td>
+            <td class="py-2 px-4 text-sm text-gray-700">2024-10-11</td>
+            <td class="py-2 px-4 text-sm text-green-500">Completed</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+  <script>
+    // Check if JWT token is present
+    if (!localStorage.getItem('jwtToken')) {
+      window.location.href = 'login.html'; // Redirect to login page if no token
+    }
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('jwtToken');  // Remove JWT token from localStorage
+      alert('Logged out successfully!');
+      window.location.href = 'login.html';  // Redirect to login page
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html></html>
+<head>
+    <title>Hottel Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-lg font-semibold">Hottels Website</div>
+            <div class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-800">Dashboard</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800">Book Hottels</a>
+                <button id="logoutBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-semibold mb-4">Your Hottel Bookings</h1>
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Hottel Number</th>
+                    <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Type</th>
+                    <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Departure Time</th>
+                    <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Status</th>
+                    <th class="py-2 px-4 bg-gray-200 text-left text-sm font-semibold text-gray-700">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="py-2 px-4 text-sm text-gray-700">103</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">Luxury Room</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">2024-10-10 08:00:00</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">booked</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">
+                        <button class="bg-red-500 text-white px-4 py-1 rounded">Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-sm text-gray-700">86</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">Deluxe Room</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">2024-10-12 07:45:00</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">booked</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">
+                        <button class="bg-red-500 text-white px-4 py-1 rounded">Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-sm text-gray-700">96</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">Elegant Rooms</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">2024-10-11 09:30:00</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">booked</td>
+                    <td class="py-2 px-4 text-sm text-gray-700">
+                        <button class="bg-red-500 text-white px-4 py-1 rounded">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Check if JWT token is present
+        if (!localStorage.getItem('jwtToken')) {
+          window.location.href = 'login.html'; // Redirect to login page if no token
+        }
+    
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+          localStorage.removeItem('jwtToken');  // Remove JWT token from localStorage
+          alert('Logged out successfully!');
+          window.location.href = 'login.html';  // Redirect to login page
+        });
+      </script>
+</body>
+</html>
